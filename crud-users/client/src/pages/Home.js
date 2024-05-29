@@ -54,6 +54,7 @@ function Home() {
     }
    }
   /* find all users */
+  /* eslint-disable */
   useEffect(async () => {
     const url = process.env.REACT_APP_API_URL
     await axios.get(`${url}/users`).then((res) => {

@@ -28,7 +28,7 @@ function Details() {
     .catch(err=>setErrors(err.response.data))
     
   }
-
+  /* eslint-disable */ 
   useEffect(async () => {
     const url = process.env.REACT_APP_API_URL
     await axios.get(`${url}/users/${id}`).then((res) => {
