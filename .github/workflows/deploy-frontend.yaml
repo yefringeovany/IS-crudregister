@@ -19,16 +19,16 @@ jobs:
       
       # Install dependencies
       - name: Install Dependencies
-        working-directory: client
+        working-directory: crud-users/client
         run: npm install
       
       # Create .env file in client directory
       - name: Adding env file
-        run: echo "REACT_APP_API_URL=${{ secrets.BACKEND_URL }}" > client/.env
+        run: echo "REACT_APP_API_URL=${{ secrets.BACKEND_URL }}" > crud-users/client/.env
 
         #Build the React App
       - name: Build React App
-        working-directory: client
+        working-directory: crud-users/client
         run: |
           npm install
           npm run build
@@ -46,7 +46,7 @@ jobs:
 
       # Deploy to remote host via SSH
       - name: Deploy to Remote Server
-        working-directory: client
+        working-directory: crud-users/client
         run: |
           echo "====== Deploy to production server ======"
           echo "====== Sync local and remote directory ======"
@@ -68,7 +68,7 @@ jobs:
       
       # Install dependencies
       - name: Install Dependencies
-        working-directory: client
+        working-directory: crud-users/client
         run: npm install
       
       - name: Adding env file
@@ -76,7 +76,7 @@ jobs:
 
       #Build the React App
       - name: Build React App
-        working-directory: client
+        working-directory: crud-users/client
         run: |
           npm install
           npm run build
@@ -94,7 +94,7 @@ jobs:
 
       # Deploy to remote host via SSH
       - name: Deploy to Remote Server
-        working-directory: client
+        working-directory: crud-users/client
         run: |
           echo "====== Deploy to production server ======"
           echo "====== Sync local and remote directory ======"
