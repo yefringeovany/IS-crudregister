@@ -39,7 +39,8 @@ jobs:
           echo "====== Sync local and remote directory ======"
           ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST1 }} 'sudo mkdir -p /home/ubuntu/backend && sudo chown -R $USER:$USER /home/ubuntu/backend'
           rsync -azPq -e "ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" --delete ./ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST1 }}:/home/ubuntu/backend/ --rsync-path="sudo rsync"
-          ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST1 }} 'if pm2 describe backend > /dev/null; then pm2 delete backend; fi && pm2 start /home/ubuntu/backend/index.js --name backend'
+          ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST1 }} 'ls -la /home/ubuntu/backend' # Para verificar que los archivos se han transferido correctamente
+          ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST1 }} 'if pm2 describe backend > /dev/null; then pm2 delete backend; fi && pm2 start /home/ubuntu/backend/app.js --name backend'
         env:
           SSH_USER: ${{ secrets.SSH_USER }}
           SSH_HOST: ${{ secrets.SSH_HOST1 }}
@@ -77,7 +78,8 @@ jobs:
           echo "====== Sync local and remote directory ======"
           ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST2 }} 'sudo mkdir -p /home/ubuntu/backend && sudo chown -R $USER:$USER /home/ubuntu/backend'
           rsync -azPq -e "ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" --delete ./ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST2 }}:/home/ubuntu/backend/ --rsync-path="sudo rsync"
-          ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST2 }} 'if pm2 describe backend > /dev/null; then pm2 delete backend; fi && pm2 start /home/ubuntu/backend/index.js --name backend'
+          ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST2 }} 'ls -la /home/ubuntu/backend' # Para verificar que los archivos se han transferido correctamente
+          ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST2 }} 'if pm2 describe backend > /dev/null; then pm2 delete backend; fi && pm2 start /home/ubuntu/backend/app.js --name backend'
         env:
           SSH_USER: ${{ secrets.SSH_USER }}
           SSH_HOST: ${{ secrets.SSH_HOST2 }}
