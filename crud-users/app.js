@@ -17,7 +17,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());  // Añade esta línea
 
-
 mongoose.connect(process.env.MONGO_URI)
 .then(() => console.log('DB CONNECTED'))
 .catch(err => console.log(err.message));
