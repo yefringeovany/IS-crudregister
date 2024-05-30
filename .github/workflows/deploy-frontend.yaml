@@ -83,6 +83,7 @@ jobs:
 
       # Set up SSH key from GitHub Secrets
       - name: Set up SSH key
+        working-directory: crud-users
         run: |
           mkdir -p ~/.ssh
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
