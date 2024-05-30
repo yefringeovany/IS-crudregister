@@ -17,6 +17,8 @@ function RowDetails({Email, Lastname, Firstname, Age, Id, OnDelete}) {
       </span>
 
       <span className="badge bg-danger" onClick={()=>OnDelete(Id)}>
+
+        
         <i className="fas fa-trash-alt"></i>
       </span>
     </td>
